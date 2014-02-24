@@ -96,7 +96,7 @@
     [self configureCheckmarkForCell:cell withChecklistItem:item];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
+/*
 - (IBAction)addItem
 {
     NSInteger newRowIndex = [_items count];
@@ -110,6 +110,7 @@
     NSArray *indexPaths = @[indexPath];
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+ */
 
 -(void)tableView:(UITableView *)tableView
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle

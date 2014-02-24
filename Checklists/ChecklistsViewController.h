@@ -10,6 +10,4 @@
 
 @interface ChecklistsViewController : UITableViewController
 
-- (IBAction)addItem;
-
 @end
