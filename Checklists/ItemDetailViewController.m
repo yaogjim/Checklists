@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Two Cavemen LLC. All rights reserved.
 //
 
-#import "AddItemViewController.h"
+#import "ItemDetailViewController.h"
 #import "ChecklistItem.h"
 
-@interface AddItemViewController ()
+@interface ItemDetailViewController ()
 
 @end
 
-@implementation AddItemViewController
+@implementation ItemDetailViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,12 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if(self.itemToEdit != nil){
+        self.title = @"Edit Item";
+        self.textField.text = self.itemToEdit.text;
+        self.doneBarButton.enabled = YES;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -50,19 +50,21 @@
 
 -(IBAction)cancel
 {
-    [self.delegate addItemViewControllerDidCancel:self];
-//  [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate itemViewControllerDidCancel:self];
 }
 
 -(IBAction)done
 {
-    ChecklistItem *item = [[ChecklistItem alloc] init];
-    item.text = self.textField.text;
-    item.checked = NO;
-    [self.delegate addItemViewController:self didFinishAddingItem:item];
+    if(self.itemToEdit == nil){
+        ChecklistItem *item = [[ChecklistItem alloc] init];
+        item.text = self.textField.text;
+        item.checked = NO;
+        [self.delegate itemViewController:self didFinishAddingItem:item];
+    } else {
+        self.itemToEdit.text = self.textField.text;
+        [self.delegate itemViewController:self didFinishEditingItem:self.itemToEdit];
+    }
     
-    // NSLog(@"Contents of the text field: %@", self.textField.text);
-    //  [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
