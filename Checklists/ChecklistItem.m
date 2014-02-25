@@ -10,11 +10,6 @@
 
 @implementation ChecklistItem
 
--(void)toggleChecked
-{
-    self.checked = !self.checked;
-}
-
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     if((self = [super init])){
@@ -28,6 +23,11 @@
 {
     [aCoder encodeObject:self.text forKey:@"Text"];
     [aCoder encodeBool:self.checked forKey:@"Checked"];
+}
+
+-(void)toggleChecked
+{
+    self.checked = !self.checked;
 }
 
 @end
