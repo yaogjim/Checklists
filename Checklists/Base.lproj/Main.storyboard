@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Checklists View Controller - Checklists-->
+        <!--Checklist View Controller - Checklists-->
         <scene sceneID="doZ-Zd-maK">
             <objects>
-                <tableViewController id="UUh-2n-kcW" customClass="ChecklistsViewController" sceneMemberID="viewController">
+                <tableViewController id="UUh-2n-kcW" customClass="ChecklistViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uK4-XY-Lav">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hqp-mr-GJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="626" y="115"/>
+            <point key="canvasLocation" x="676" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="M8N-yj-n95">
@@ -69,12 +69,34 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="UUh-2n-kcW" kind="relationship" relationship="rootViewController" id="A0f-me-9MC"/>
+                        <segue destination="dFc-42-8La" kind="relationship" relationship="rootViewController" id="WRo-1h-r7Z"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8m-Pc-FcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="115"/>
+            <point key="canvasLocation" x="-322" y="115"/>
+        </scene>
+        <!--All Lists View Controller - Checklists-->
+        <scene sceneID="NsI-lG-p9U">
+            <objects>
+                <tableViewController id="dFc-42-8La" customClass="AllListsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oI9-6l-NUo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="dFc-42-8La" id="YFf-CF-IfR"/>
+                            <outlet property="delegate" destination="dFc-42-8La" id="8Zv-QM-LD2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Checklists" id="YTG-gI-dIf"/>
+                    <connections>
+                        <segue destination="UUh-2n-kcW" kind="push" identifier="ShowChecklist" id="ZYq-9X-SMD"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qXi-VP-oaq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="180" y="115"/>
         </scene>
         <!--Item Detail View Controller - Add Item-->
         <scene sceneID="IML-Wu-Lfz">
