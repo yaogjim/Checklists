@@ -8,6 +8,7 @@
 
 #import "AllListsViewController.h"
 #import "Checklist.h"
+#import "ChecklistViewController.h"
 
 @interface AllListsViewController ()
 
@@ -49,11 +50,6 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,7 +82,77 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"ShowChecklist" sender:nil];
+    Checklist *checklist = _lists[indexPath.row];
+    [self performSegueWithIdentifier:@"ShowChecklist" sender:checklist];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"ShowChecklist"]){
+        ChecklistViewController * controller = segue.destinationViewController;
+        controller.checklist = sender;
+    }
+    else if([segue.identifier isEqualToString:@"AddChecklist"]){
+        UINavigationController *navigationController = segue.destinationViewController;
+        
+        ListDetailViewController *controller = (ListDetailViewController *)navigationController.topViewController;
+        
+        controller.delegate = self;
+        controller.checklistToEdit = nil;
+    }
+}
+
+- (void)listDetailViewControllerDidCancel:(ListDetailViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)listDetailViewController:(ListDetailViewController *)controller didFinishAddingChecklist:(Checklist *)checklist
+{
+    NSInteger newRowIndex = [_lists count];
+    [_lists addObject:checklist];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
+    
+    NSArray *indexPaths = @[indexPath];
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)listDetailViewController:(ListDetailViewController *)controller
+       didFinishEditingChecklist:(Checklist *)checklist
+{
+    NSInteger index = [_lists indexOfObject:checklist];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    cell.textLabel.text = checklist.name;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_lists removeObjectAtIndex:indexPath.row];
+    
+    NSArray *indexPaths = @[indexPath];
+    [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    UINavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"ListNavigationController"];
+    
+    ListDetailViewController *controller = (ListDetailViewController *)navigationController.topViewController;
+    
+    controller.delegate = self;
+    
+    Checklist *checklist = _lists[indexPath.row];
+    controller.checklistToEdit = checklist;
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end
