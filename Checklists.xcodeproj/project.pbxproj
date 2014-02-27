@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		655092CF18BECFE600BE8F88 /* ListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655092CE18BECFE600BE8F88 /* ListDetailViewController.m */; };
+		655092D218BF124100BE8F88 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 655092D118BF124100BE8F88 /* DataModel.m */; };
 		655C08E918BBB13700B23B7F /* ChecklistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 655C08E818BBB13700B23B7F /* ChecklistItem.m */; };
 		655C08EC18BBC9CA00B23B7F /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655C08EB18BBC9CA00B23B7F /* ItemDetailViewController.m */; };
 		655C08EF18BD50B600B23B7F /* AllListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655C08EE18BD50B600B23B7F /* AllListsViewController.m */; };
@@ -41,6 +42,8 @@
 /* Begin PBXFileReference section */
 		655092CD18BECFE600BE8F88 /* ListDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListDetailViewController.h; sourceTree = "<group>"; };
 		655092CE18BECFE600BE8F88 /* ListDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListDetailViewController.m; sourceTree = "<group>"; };
+		655092D018BF124100BE8F88 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		655092D118BF124100BE8F88 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		655C08E718BBB13700B23B7F /* ChecklistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecklistItem.h; sourceTree = "<group>"; };
 		655C08E818BBB13700B23B7F /* ChecklistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChecklistItem.m; sourceTree = "<group>"; };
 		655C08EA18BBC9CA00B23B7F /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 				655C08EE18BD50B600B23B7F /* AllListsViewController.m */,
 				655092CD18BECFE600BE8F88 /* ListDetailViewController.h */,
 				655092CE18BECFE600BE8F88 /* ListDetailViewController.m */,
+				655092D018BF124100BE8F88 /* DataModel.h */,
+				655092D118BF124100BE8F88 /* DataModel.m */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			files = (
 				65732BB918BB14680025AD80 /* main.m in Sources */,
 				65732BBD18BB14680025AD80 /* ChecklistsAppDelegate.m in Sources */,
+				655092D218BF124100BE8F88 /* DataModel.m in Sources */,
 				655C08EF18BD50B600B23B7F /* AllListsViewController.m in Sources */,
 				655092CF18BECFE600BE8F88 /* ListDetailViewController.m in Sources */,
 				65732BC318BB14680025AD80 /* ChecklistViewController.m in Sources */,
