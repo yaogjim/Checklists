@@ -61,4 +61,9 @@
     [self saveData];
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSLog(@"didReceiveLocalNotification %@", notification);
+}
+
 @end
