@@ -134,7 +134,7 @@
 // Need to override this or the app crashes
 - (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if (indexPath.section == 1 && indexPath.row == 2){
+  if (indexPath.section == 1 && indexPath.row == 2) {
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:0 inSection:indexPath.section];
 
     return [super tableView:tableView indentationLevelForRowAtIndexPath:newIndexPath];
@@ -145,7 +145,7 @@
 
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if (indexPath.section == 1 && indexPath.row == 1){
+  if (indexPath.section == 1 && indexPath.row == 1) {
     return indexPath;
   } else {
     return nil;
@@ -158,7 +158,11 @@
   [self.textField resignFirstResponder];
   
   if (indexPath.section == 1 && indexPath.row == 1) {
-    [self showDatePicker];
+    if (!_datePickerVisible) {
+      [self showDatePicker];
+    } else {
+      [self hideDatePicker];
+    }
   }
 }
 
@@ -171,15 +175,50 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-  // [self hideDatePicker];
+  [self hideDatePicker];
 }
 
 - (void)showDatePicker
 {
   _datePickerVisible = YES;
-    
+
+  NSIndexPath *indexPathDateRow = [NSIndexPath indexPathForRow:1 inSection:1];
   NSIndexPath *indexPathDatePicker = [NSIndexPath indexPathForRow:2 inSection:1];
+
+  UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPathDateRow];
+  cell.detailTextLabel.textColor = cell.detailTextLabel.tintColor;
+
+  [self.tableView beginUpdates];
   [self.tableView insertRowsAtIndexPaths:@[indexPathDatePicker] withRowAnimation:UITableViewRowAnimationFade];
+  [self.tableView reloadRowsAtIndexPaths:@[indexPathDateRow] withRowAnimation:UITableViewRowAnimationNone];
+  [self.tableView endUpdates];
+
+  UITableViewCell *datePickerCell = [self.tableView cellForRowAtIndexPath:indexPathDatePicker];
+  UIDatePicker *datePicker = (UIDatePicker *) [datePickerCell viewWithTag:100];
+  [datePicker setDate:_dueDate animated:NO];
 }
 
+- (void)hideDatePicker
+{
+  if (_datePickerVisible) {
+    _datePickerVisible = NO;
+
+    NSIndexPath *indexPathDateRow = [NSIndexPath indexPathForRow:1 inSection: 1];
+    NSIndexPath *indexPathDatePicker = [NSIndexPath indexPathForRow:2 inSection:1];
+
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath: indexPathDateRow];
+    cell.detailTextLabel.textColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
+
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPathDateRow] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPathDatePicker] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+  }
+}
+
+- (void)dateChanged:(UIDatePicker *)datePicker
+{
+  _dueDate = datePicker.date;
+  [self updateDueDateLabel];
+}
 @end
