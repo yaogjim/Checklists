@@ -13,12 +13,12 @@
 
 @protocol ItemDetailViewControllerDelegate <NSObject>
 
--(void)itemViewControllerDidCancel:(ItemDetailViewController *)controller;
+-(void)itemDetailViewControllerDidCancel:(ItemDetailViewController *)controller;
 
--(void)itemViewController:(ItemDetailViewController *)controller
+-(void)itemDetailViewController:(ItemDetailViewController *)controller
         didFinishAddingItem:(ChecklistItem *)item;
 
--(void)itemViewController:(ItemDetailViewController *)controller
+-(void)itemDetailViewController:(ItemDetailViewController *)controller
         didFinishEditingItem:(ChecklistItem *)item;
 
 @end
@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic, weak) id <ItemDetailViewControllerDelegate> delegate;
 @property (nonatomic, strong) ChecklistItem *itemToEdit;
+@property (nonatomic, weak) IBOutlet UISwitch *switchControl;
+@property (nonatomic, weak) IBOutlet UILabel *dueDateLabel;
 
 - (IBAction)cancel;
 - (IBAction)done;
