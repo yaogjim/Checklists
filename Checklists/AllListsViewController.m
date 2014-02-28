@@ -31,7 +31,7 @@
     
     NSInteger index = [self.dataModel indexOfSelectedChecklist];
     
-    if(index >= 0 && index < [self.dataModel.lists count]) {
+    if(index >= 0 && index < [self.dataModel getChecklistCount]) {
         
         Checklist *checklist = self.dataModel.lists[index];
         
@@ -54,7 +54,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataModel.lists count];
+    return [self.dataModel getChecklistCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -119,7 +119,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.dataModel.lists removeObjectAtIndex:indexPath.row];
+    [self.dataModel removeChecklistAtIndex:indexPath.row];
     
     NSArray *indexPaths = @[indexPath];
     [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];

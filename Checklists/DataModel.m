@@ -15,7 +15,8 @@
 {
     NSDictionary *dictionary = @{
                                  @"ChecklistIndex" :@-1,
-                                 @"FirstTime":@YES
+                                 @"FirstTime":@YES,
+                                 @"ChecklistItemId" : @0
                                  };
     
     
@@ -86,6 +87,16 @@
     [self.lists addObject:checklist];
 }
 
+- (void)removeChecklistAtIndex:(NSInteger)index
+{
+    [self.lists removeObjectAtIndex:index];
+}
+
+- (NSInteger)getChecklistCount
+{
+    return [self.lists count];
+}
+
 - (void)sortChecklists
 {
     [self.lists sortUsingSelector:@selector(compare:)];
@@ -99,6 +110,18 @@
 - (void)setIndexOfSelectedChecklist:(NSInteger)index
 {
     [[NSUserDefaults standardUserDefaults] setInteger:index forKey:@"ChecklistIndex"];
+}
+
++ (int)nextChecklistItemId
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger itemId = [userDefaults integerForKey:@"ChecklistItemId"];
+    
+    [userDefaults setInteger:itemId + 1 forKey:@"ChecklistItemId"];
+    
+    [userDefaults synchronize];
+    return itemId;
 }
 
 @end
