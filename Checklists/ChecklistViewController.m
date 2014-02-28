@@ -81,12 +81,12 @@
     label.text = (item.checked) ? @"√" : @"";
 }
 
--(void)itemViewControllerDidCancel:(ItemDetailViewController *)controller
+-(void)itemDetailViewControllerDidCancel:(ItemDetailViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)itemViewController:(ItemDetailViewController *)controller
+-(void)itemDetailViewController:(ItemDetailViewController *)controller
       didFinishAddingItem:(ChecklistItem *)item
 {
     NSInteger newRowIndex = [self.checklist.items count];
@@ -99,7 +99,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)itemViewController:(ItemDetailViewController *)controller
+-(void)itemDetailViewController:(ItemDetailViewController *)controller
      didFinishEditingItem:(ChecklistItem *)item
 {
     NSInteger index = [self.checklist.items indexOfObject:item];
