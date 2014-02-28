@@ -81,6 +81,16 @@
     }
 }
 
+- (void)addChecklist:(Checklist *)checklist
+{
+    [self.lists addObject:checklist];
+}
+
+- (void)sortChecklists
+{
+    [self.lists sortUsingSelector:@selector(compare:)];
+}
+
 - (NSInteger)indexOfSelectedChecklist
 {
     return [[NSUserDefaults standardUserDefaults] integerForKey:@"ChecklistIndex"];

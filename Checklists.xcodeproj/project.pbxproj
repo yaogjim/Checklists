@@ -27,6 +27,7 @@
 		65732BCE18BB14680025AD80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65732BB018BB14680025AD80 /* UIKit.framework */; };
 		65732BD618BB14680025AD80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65732BD418BB14680025AD80 /* InfoPlist.strings */; };
 		65732BD818BB14680025AD80 /* ChecklistsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65732BD718BB14680025AD80 /* ChecklistsTests.m */; };
+		65845AD118BFE7E400723425 /* IconPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65845AD018BFE7E400723425 /* IconPickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		65732BD318BB14680025AD80 /* ChecklistsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChecklistsTests-Info.plist"; sourceTree = "<group>"; };
 		65732BD518BB14680025AD80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		65732BD718BB14680025AD80 /* ChecklistsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChecklistsTests.m; sourceTree = "<group>"; };
+		65845ACF18BFE7E400723425 /* IconPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconPickerViewController.h; sourceTree = "<group>"; };
+		65845AD018BFE7E400723425 /* IconPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconPickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 				655092CE18BECFE600BE8F88 /* ListDetailViewController.m */,
 				655092D018BF124100BE8F88 /* DataModel.h */,
 				655092D118BF124100BE8F88 /* DataModel.m */,
+				65845ACF18BFE7E400723425 /* IconPickerViewController.h */,
+				65845AD018BFE7E400723425 /* IconPickerViewController.m */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65732BB918BB14680025AD80 /* main.m in Sources */,
+				65845AD118BFE7E400723425 /* IconPickerViewController.m in Sources */,
 				65732BBD18BB14680025AD80 /* ChecklistsAppDelegate.m in Sources */,
 				655092D218BF124100BE8F88 /* DataModel.m in Sources */,
 				655C08EF18BD50B600B23B7F /* AllListsViewController.m in Sources */,

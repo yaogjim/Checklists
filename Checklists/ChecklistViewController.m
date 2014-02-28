@@ -76,7 +76,7 @@
                withChecklistItem:(ChecklistItem *)item
 {
     UILabel *label = (UILabel*)[cell viewWithTag:1001];
-    
+    label.textColor = self.view.tintColor;
     label.text = (item.checked) ? @"√" : @"";
 }
 
