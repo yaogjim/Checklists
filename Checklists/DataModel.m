@@ -112,7 +112,7 @@
     [[NSUserDefaults standardUserDefaults] setInteger:index forKey:@"ChecklistIndex"];
 }
 
-+ (int)nextChecklistItemId
++ (NSInteger)nextChecklistItemId
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
